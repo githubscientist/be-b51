@@ -16,6 +16,16 @@ let notes = [
         id: 3,
         content: 'simple web server using node.js',
         important: true
+    },
+    {
+        id: 4,
+        content: 'express makes backend restful painless',
+        important: true
+    },
+    {
+        id: 5,
+        content: 'backend restful using nodejs will grow complex',
+        important: false
     }
 ];
 
