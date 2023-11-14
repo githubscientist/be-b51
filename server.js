@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 
+// middleware
+app.use(express.json());
+
 /*
     endpoints
 
@@ -66,6 +69,12 @@ app.get('/api/notes/:id', (request, response) => {
     } else {
         response.status(404).json({ message: 'id does not exists' });
     }
+});
+
+// endpoint to create a new note based on the request data
+app.post('/api/notes', (request, response) => {
+    notes = notes.concat(request.body);
+    response.status(201).json({ message: 'note created successfully' });
 });
 
 const HOSTNAME = 'localhost';
