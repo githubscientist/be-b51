@@ -94,6 +94,26 @@ app.post('/api/notes', (request, response) => {
     response.status(201).json({ message: 'note created successfully' });
 });
 
+// endpoint to replace the entire note identified by id with the request data
+app.put('/api/notes/:id', (request, response) => {
+    // get the id from the params
+    const id = request.params.id;
+
+    // get the note to replace from the user - request body
+    const noteToReplace = request.body;
+
+    // find the object matching the id
+    const note = notes.find(note => note.id == id);
+
+    notes = notes.map(note => note.id == id ? noteToReplace : note);
+
+    if (note) {
+        response.status(200).json({ message: 'note replaced' });
+    } else {
+        response.status(404).json({ message: 'id does not exists' });
+    }
+});
+
 const HOSTNAME = 'localhost';
 const PORT = 3001;
 
