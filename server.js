@@ -29,11 +29,18 @@ let notes = [
     }
 ];
 
+// set the endpoints
+// set the / route
 app.get('/', (request, response) => {
-    response.send('Hello World!');
+    response.send('<h1>Notes Application</h1>');
 });
 
-const HOSTNAME = '127.0.0.1';
+// endpoint to view all the notes
+app.get('/api/notes', (request, response) => {
+    response.json(notes);
+})
+
+const HOSTNAME = 'localhost';
 const PORT = 3001;
 
 // make the server to listen to the defined portnumber
