@@ -32,7 +32,7 @@ let notes = [
 // set the endpoints
 // set the / route
 app.get('/', (request, response) => {
-    response.send('<h1>Notes Application</h1>');
+    response.send('<h1>Notes App</h1>');
 });
 
 // endpoint to view all the notes
