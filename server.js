@@ -1,5 +1,5 @@
-// import the module http
-const http = require('http');
+const express = require('express');
+const app = express();
 
 let notes = [
     {
@@ -29,18 +29,14 @@ let notes = [
     }
 ];
 
-// create a server
-const server = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify(notes));
+app.get('/', (request, response) => {
+    response.send('Hello World!');
 });
 
-// define the server hostname and port number
-const hostname = '127.0.0.1'; // localhost
-const port = 3001;
+const HOSTNAME = '127.0.0.1';
+const PORT = 3001;
 
 // make the server to listen to the defined portnumber
-server.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}`);
+app.listen(PORT, () => {
+    console.log(`Server running at http://${HOSTNAME}:${PORT}`);
 });
