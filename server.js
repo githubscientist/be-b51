@@ -71,6 +71,23 @@ app.get('/api/notes/:id', (request, response) => {
     }
 });
 
+// endpoint to delete a note identified by id
+app.delete('/api/notes/:id', (request, response) => {
+    // get the id from the params
+    const id = request.params.id;
+
+    // find the note matching the id
+    const note = notes.find(note => note.id == id);
+
+    notes = notes.filter(note => note.id != id);
+
+    if (note) {
+        response.status(204).json(note);
+    } else {
+        response.status(404).json({ message: 'id does not exists' });
+    }
+});
+
 // endpoint to create a new note based on the request data
 app.post('/api/notes', (request, response) => {
     notes = notes.concat(request.body);
